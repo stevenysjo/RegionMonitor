@@ -21,7 +21,7 @@ NSString * const ITGMapNotificationID = @"identifier";
     self = [super init];
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyHundredMeters;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     if([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedAlways &&
        [_locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]){
         [_locationManager performSelector:@selector(requestAlwaysAuthorization)];
@@ -94,7 +94,7 @@ NSString * const ITGMapNotificationID = @"identifier";
     }
     [logs addObject:log];
     [[NSUserDefaults standardUserDefaults] setObject:logs forKey:identifier];
-    
+    [[NSUserDefaults standardUserDefaults] synchronize];
     NSLog(@"log %@",[[NSUserDefaults standardUserDefaults] objectForKey:identifier]);
 
 }
