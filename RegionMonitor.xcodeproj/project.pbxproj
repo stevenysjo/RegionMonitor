@@ -14,6 +14,7 @@
 		5A451B221A64E46700111914 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5A451B211A64E46700111914 /* Images.xcassets */; };
 		5A451B251A64E46700111914 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 5A451B231A64E46700111914 /* LaunchScreen.xib */; };
 		5A451B311A64E46700111914 /* RegionMonitorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A451B301A64E46700111914 /* RegionMonitorTests.m */; };
+		5A451B3C1A64EDD800111914 /* LocationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A451B3B1A64EDD800111914 /* LocationDelegate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +41,8 @@
 		5A451B2A1A64E46700111914 /* RegionMonitorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RegionMonitorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5A451B2F1A64E46700111914 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		5A451B301A64E46700111914 /* RegionMonitorTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegionMonitorTests.m; sourceTree = "<group>"; };
+		5A451B3A1A64EDD800111914 /* LocationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LocationDelegate.h; sourceTree = "<group>"; };
+		5A451B3B1A64EDD800111914 /* LocationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LocationDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +88,8 @@
 				5A451B191A64E46700111914 /* AppDelegate.m */,
 				5A451B1B1A64E46700111914 /* ViewController.h */,
 				5A451B1C1A64E46700111914 /* ViewController.m */,
+				5A451B3A1A64EDD800111914 /* LocationDelegate.h */,
+				5A451B3B1A64EDD800111914 /* LocationDelegate.m */,
 				5A451B1E1A64E46700111914 /* Main.storyboard */,
 				5A451B211A64E46700111914 /* Images.xcassets */,
 				5A451B231A64E46700111914 /* LaunchScreen.xib */,
@@ -220,6 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5A451B1D1A64E46700111914 /* ViewController.m in Sources */,
+				5A451B3C1A64EDD800111914 /* LocationDelegate.m in Sources */,
 				5A451B1A1A64E46700111914 /* AppDelegate.m in Sources */,
 				5A451B171A64E46700111914 /* main.m in Sources */,
 			);
@@ -297,7 +303,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -333,7 +339,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -345,6 +351,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RegionMonitor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -355,6 +362,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = RegionMonitor/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -414,6 +422,7 @@
 				5A451B361A64E46700111914 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		5A451B371A64E46700111914 /* Build configuration list for PBXNativeTarget "RegionMonitorTests" */ = {
 			isa = XCConfigurationList;
@@ -422,6 +431,7 @@
 				5A451B391A64E46700111914 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

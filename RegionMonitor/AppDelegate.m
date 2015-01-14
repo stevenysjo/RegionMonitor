@@ -7,16 +7,34 @@
 //
 
 #import "AppDelegate.h"
+#import <CoreLocation/CoreLocation.h>
+
 
 @interface AppDelegate ()
-
 @end
 
 @implementation AppDelegate
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    UIUserNotificationType types = UIUserNotificationTypeBadge |
+    UIUserNotificationTypeSound | UIUserNotificationTypeAlert;
+    
+    UIUserNotificationSettings *mySettings =
+    [UIUserNotificationSettings settingsForTypes:types categories:nil];
+    if ([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)]) {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:mySettings];
+    }else
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert];
+    if (self.locationController == nil) {
+        self.locationController = [[LocationDelegate alloc] init];
+    }
+
+//    if([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]){
+        UILocalNotification *locNotification = [[UILocalNotification alloc] init];
+        locNotification.alertBody = @"App Activated";
+        [[UIApplication sharedApplication] presentLocalNotificationNow:locNotification];
+//    }
     return YES;
 }
 
