@@ -21,12 +21,11 @@ NSString * const ITGMapNotificationID = @"identifier";
     self = [super init];
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
     if([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedAlways &&
        [_locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]){
         [_locationManager performSelector:@selector(requestAlwaysAuthorization)];
     }
-    
     return self;
 }
 -(void)registerLocalNotificationWithDictionary:(NSDictionary *)dict{
@@ -46,6 +45,7 @@ NSString * const ITGMapNotificationID = @"identifier";
     NSLog(@"%s %@",__PRETTY_FUNCTION__,manager.location.description);
 }
 -(void)locationManager:(CLLocationManager *)manager didEnterRegion:(CLCircularRegion *)region{
+    if(manager.location.horizontalAccuracy > 200) return;
     CLLocation *center = [[CLLocation alloc] initWithLatitude:region.center.latitude longitude:region.center.longitude];
     CLLocation *userLocation = manager.location;
     CGFloat distance = [userLocation distanceFromLocation:center];
@@ -62,6 +62,7 @@ NSString * const ITGMapNotificationID = @"identifier";
     }
 }
 -(void)locationManager:(CLLocationManager *)manager didExitRegion:(CLCircularRegion *)region{
+    if(manager.location.horizontalAccuracy > 200) return;
     CLLocation *center = [[CLLocation alloc] initWithLatitude:region.center.latitude longitude:region.center.longitude];
     CLLocation *userLocation = manager.location;
     CGFloat distance = [userLocation distanceFromLocation:center];

@@ -30,11 +30,6 @@
         self.locationController = [[LocationDelegate alloc] init];
     }
 
-//    if([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]){
-        UILocalNotification *locNotification = [[UILocalNotification alloc] init];
-        locNotification.alertBody = @"App Activated";
-        [[UIApplication sharedApplication] presentLocalNotificationNow:locNotification];
-//    }
     return YES;
 }
 
