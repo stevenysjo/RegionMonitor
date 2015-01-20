@@ -99,6 +99,7 @@
 //    }
     NSLog(@"sjs\n%@",[[NSUserDefaults standardUserDefaults] dictionaryRepresentation]);
     NSLog(@"cur %@ %f",_locationController.locationManager.location, _locationController.locationManager.location.horizontalAccuracy);
+    NSLog(@"localnotification %@",[UIApplication sharedApplication].scheduledLocalNotifications);
 
 }
 

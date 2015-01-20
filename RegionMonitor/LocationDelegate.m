@@ -21,7 +21,7 @@ NSString * const ITGMapNotificationID = @"identifier";
     self = [super init];
     _locationManager = [[CLLocationManager alloc] init];
     _locationManager.delegate = self;
-    _locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    _locationManager.desiredAccuracy = kCLLocationAccuracyBest;
     if([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorizedAlways &&
        [_locationManager respondsToSelector:@selector(requestAlwaysAuthorization)]){
         [_locationManager performSelector:@selector(requestAlwaysAuthorization)];
@@ -49,7 +49,8 @@ NSString * const ITGMapNotificationID = @"identifier";
     CLLocation *center = [[CLLocation alloc] initWithLatitude:region.center.latitude longitude:region.center.longitude];
     CLLocation *userLocation = manager.location;
     CGFloat distance = [userLocation distanceFromLocation:center];
-    NSString *message = [NSString stringWithFormat:@"Enter %@ \nDistance %f\nAccuracy %f",region.identifier,distance,userLocation.horizontalAccuracy];
+    NSString *message = [NSString stringWithFormat:@"Enter %@ \nDistance %f, Accuracy %f\nTimestamp %@\nNow  : %@",
+                         region.identifier,distance,userLocation.horizontalAccuracy,manager.location.timestamp, [NSDate date]];
     [self addLogWithManager:manager region:region enter:YES];
     
     UILocalNotification *locNotification = [[UILocalNotification alloc] init];
@@ -66,7 +67,8 @@ NSString * const ITGMapNotificationID = @"identifier";
     CLLocation *center = [[CLLocation alloc] initWithLatitude:region.center.latitude longitude:region.center.longitude];
     CLLocation *userLocation = manager.location;
     CGFloat distance = [userLocation distanceFromLocation:center];
-    NSString *message = [NSString stringWithFormat:@"Exit %@ \nDistance %f\nAccuracy %f",region.identifier,distance,userLocation.horizontalAccuracy];
+    NSString *message = [NSString stringWithFormat:@"Exit %@ \nDistance %f, Accuracy %f\nTimestamp %@\nNow  : %@",
+                         region.identifier,distance,userLocation.horizontalAccuracy,manager.location.timestamp, [NSDate date]];
     
     [self addLogWithManager:manager region:region enter:NO];
 
@@ -85,7 +87,7 @@ NSString * const ITGMapNotificationID = @"identifier";
     CLLocation *center = [[CLLocation alloc] initWithLatitude:region.center.latitude longitude:region.center.longitude];
     CLLocation *userLocation = manager.location;
     CGFloat distance = [userLocation distanceFromLocation:center];
-    NSString *log = [NSString stringWithFormat:@"------------\n%@ \nRegion    : %@\nCurrent   : %@\nDistance  : %f\nAccuracy  : %f\n\n-----------",message,region,userLocation,distance,userLocation.horizontalAccuracy];
+    NSString *log = [NSString stringWithFormat:@"------------\n%@ \nRegion    : %@\nCurrent   : %@\nDistance  : %f\nAccuracy  : %f\nTime    : %@\n-----------",message,region,userLocation,distance,userLocation.horizontalAccuracy, [NSDate date]];
     
     NSMutableArray *logs;
     if([[NSUserDefaults standardUserDefaults] objectForKey:identifier]){
