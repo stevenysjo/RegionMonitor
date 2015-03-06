@@ -29,7 +29,9 @@
     if (self.locationController == nil) {
         self.locationController = [[LocationDelegate alloc] init];
     }
-
+    UILocalNotification *note = [[UILocalNotification alloc] init];
+    note.alertBody=@"Actived";
+    [[UIApplication sharedApplication] presentLocalNotificationNow:note];
     return YES;
 }
 
